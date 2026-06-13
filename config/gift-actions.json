@@ -1,0 +1,11 @@
+{
+  "mappings": [
+    { "gift": "Rose", "giftId": 5655, "action": "spawnCone", "params": { "lane": -1 } },
+    { "gift": "TikTok", "giftId": 5269, "action": "spawnCar", "params": { "lane": -1 } },
+    { "gift": "Finger Heart", "giftId": 5487, "action": "coinMagnet", "params": { "duration": 6000 } },
+    { "gift": "GG", "giftId": 6064, "action": "forcedJump", "params": { "mode": "jump" } },
+    { "gift": "Doughnut", "giftId": 5879, "action": "shield", "params": { "duration": 5000 } },
+    { "gift": "Perfume", "giftId": 5658, "action": "propulsion", "params": { "duration": 4000, "multiplier": 1.8 } },
+    { "gift": "Galaxy", "giftId": 5333, "action": "obstacleRain", "params": { "count": 6 } }
+  ]
+}

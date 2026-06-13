@@ -1,0 +1,27 @@
+{
+  "name": "subway-tiktok-live",
+  "version": "1.0.0",
+  "description": "Runner infinito tipo Subway Surfers que conecta a un TikTok LIVE (API de TikTools) y dispara acciones en el juego segun los regalos de los espectadores.",
+  "main": "server/index.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js"
+  },
+  "keywords": [
+    "tiktok",
+    "tiktok-live",
+    "subway-surfers",
+    "phaser",
+    "endless-runner",
+    "tiktools"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "socket.io": "^4.7.5",
+    "tiktok-live-api": "^1.0.0"
+  }
+}

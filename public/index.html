@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Subway x TikTok LIVE</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div id="app">
+    <main id="game-wrap">
+      <div id="game"></div>
+    </main>
+
+    <aside id="panel">
+      <h1>Subway <span>x</span> TikTok LIVE</h1>
+
+      <section class="card">
+        <h2>Conexion TikTok</h2>
+        <div class="row">
+          <input id="tiktok-username" type="text" placeholder="@usuario_tiktok" />
+          <button id="btn-connect">Conectar</button>
+          <button id="btn-disconnect" class="secondary">Desconectar</button>
+        </div>
+        <p id="tiktok-status" class="status idle">Desconectado</p>
+        <p class="hint">Requiere <code>TIKTOOL_API_KEY</code> (clave gratuita en
+          <a href="https://tik.tools" target="_blank" rel="noopener">tik.tools</a>).
+          Sin clave puedes usar el simulador.</p>
+      </section>
+
+      <section class="card">
+        <h2>Simulador de regalos</h2>
+        <p class="hint">Dispara una accion al instante para probar sin estar en directo.</p>
+        <div id="sim-buttons" class="sim-grid"></div>
+      </section>
+
+      <section class="card">
+        <div class="row between">
+          <h2>Regalos &rarr; Acciones</h2>
+          <button id="btn-add-mapping" class="secondary small">+ Anadir</button>
+        </div>
+        <div id="mappings"></div>
+        <div class="row">
+          <button id="btn-save">Guardar configuracion</button>
+          <span id="save-status" class="hint"></span>
+        </div>
+      </section>
+
+      <section class="card log-card">
+        <h2>Eventos</h2>
+        <ul id="event-log"></ul>
+      </section>
+    </aside>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/phaser@3.80.1/dist/phaser.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="js/game/BootScene.js"></script>
+  <script src="js/game/GameScene.js"></script>
+  <script src="js/game/UIScene.js"></script>
+  <script src="js/actions.js"></script>
+  <script src="js/game/main.js"></script>
+  <script src="js/socket.js"></script>
+  <script src="js/controlPanel.js"></script>
+</body>
+</html>
