@@ -20,9 +20,14 @@ TikTok LIVE  ──(tiktok-live-api / tik.tools)──▶  Servidor Node.js
   TikTok LIVE con `tiktok-live-api`, escucha el evento `gift`, busca el mapeo en
   `config/gift-actions.json` y envía la acción al navegador.
 - **Juego** (`public/js/game/runner3d.js`): runner 3D de 3 carriles en Three.js.
-  El personaje y el escenario se construyen con geometría de Three.js (sin assets
-  externos ni material con copyright); el personaje tiene animación de carrera,
-  salto y deslizamiento procedurales.
+  El personaje (un monstruo rojo y peludo **estilo Elmo**, con ojos grandes y
+  nariz naranja) y el escenario se construyen con geometría propia de Three.js
+  (sin assets oficiales ni material con copyright). El personaje tiene animación
+  de carrera, salto y deslizamiento procedurales.
+
+> Nota: el personaje es una interpretación original del estilo de Elmo, no usa
+> assets oficiales. Elmo es una marca de Sesame Workshop; tenlo en cuenta si
+> transmites públicamente o monetizas.
 - **Panel** (`public/js/controlPanel.js`): conectar el usuario de TikTok, editar
   los mapeos regalo→acción y un **simulador** para probar sin estar en directo.
 

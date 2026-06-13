@@ -122,53 +122,75 @@
     }
   }
 
-  // ---------- Personaje animado ----------
+  // ---------- Personaje animado (estilo Elmo: monstruo rojo y peludo) ----------
+  // Construido con geometria propia, NO con assets oficiales de Elmo (marca de
+  // Sesame Workshop). Es una interpretacion original del estilo.
   function buildPlayer() {
     player = new THREE.Group();
-    const skin = new THREE.MeshStandardMaterial({ color: 0xf1c27d });
-    const shirt = new THREE.MeshStandardMaterial({ color: 0x25f4ee });
-    const pants = new THREE.MeshStandardMaterial({ color: 0x2b3a55 });
-    const hair = new THREE.MeshStandardMaterial({ color: 0x3a2a1a });
-    const shoe = new THREE.MeshStandardMaterial({ color: 0xfe2c55 });
+    const fur = new THREE.MeshStandardMaterial({ color: 0xff2b2b, roughness: 0.95 });
+    const white = new THREE.MeshStandardMaterial({ color: 0xffffff });
+    const black = new THREE.MeshStandardMaterial({ color: 0x111111 });
+    const orange = new THREE.MeshStandardMaterial({ color: 0xff7b1a, roughness: 0.6 });
 
-    // Torso
-    const torso = new THREE.Mesh(new THREE.BoxGeometry(0.7, 0.9, 0.4), shirt);
-    torso.position.y = 1.2;
+    // Torso redondeado y rojo.
+    const torso = new THREE.Mesh(new THREE.SphereGeometry(0.55, 18, 18), fur);
+    torso.position.y = 1.15;
+    torso.scale.set(1, 1.15, 0.9);
     torso.castShadow = true;
     player.add(torso);
 
-    // Cabeza + pelo
-    const head = new THREE.Mesh(new THREE.SphereGeometry(0.32, 16, 16), skin);
+    // Cabeza grande.
+    const head = new THREE.Mesh(new THREE.SphereGeometry(0.5, 22, 22), fur);
     head.position.y = 1.95;
     head.castShadow = true;
     player.add(head);
-    const cap = new THREE.Mesh(new THREE.SphereGeometry(0.34, 16, 16, 0, Math.PI * 2, 0, Math.PI / 2), hair);
-    cap.position.y = 2.0;
-    player.add(cap);
 
-    // Brazos (pivote en el hombro)
-    const armGeo = new THREE.BoxGeometry(0.18, 0.7, 0.18);
-    const leftArm = limb(armGeo, shirt, -0.5, 1.55);
-    const rightArm = limb(armGeo, shirt, 0.5, 1.55);
+    // Ojos grandes (esferas blancas juntas) con pupilas.
+    const eyeGeo = new THREE.SphereGeometry(0.17, 16, 16);
+    [-0.16, 0.16].forEach((x) => {
+      const eye = new THREE.Mesh(eyeGeo, white);
+      eye.position.set(x, 2.08, 0.4);
+      player.add(eye);
+      const pupil = new THREE.Mesh(new THREE.SphereGeometry(0.07, 12, 12), black);
+      pupil.position.set(x, 2.08, 0.55);
+      player.add(pupil);
+    });
+
+    // Nariz naranja ovalada.
+    const nose = new THREE.Mesh(new THREE.SphereGeometry(0.15, 16, 16), orange);
+    nose.position.set(0, 1.9, 0.48);
+    nose.scale.set(1.2, 0.95, 1);
+    player.add(nose);
+
+    // Boca: medio toro oscuro a modo de sonrisa.
+    const mouth = new THREE.Mesh(new THREE.TorusGeometry(0.18, 0.05, 8, 18, Math.PI), black);
+    mouth.position.set(0, 1.74, 0.44);
+    mouth.rotation.z = Math.PI;
+    player.add(mouth);
+
+    // Brazos rojos (pivote en el hombro).
+    const armGeo = new THREE.BoxGeometry(0.2, 0.6, 0.2);
+    const leftArm = limb(armGeo, fur, -0.58, 1.4);
+    const rightArm = limb(armGeo, fur, 0.58, 1.4);
     player.add(leftArm.pivot, rightArm.pivot);
 
-    // Piernas (pivote en la cadera)
-    const legGeo = new THREE.BoxGeometry(0.22, 0.8, 0.22);
-    const leftLeg = limb(legGeo, pants, -0.18, 0.78);
-    const rightLeg = limb(legGeo, pants, 0.18, 0.78);
+    // Piernas rojas (pivote en la cadera).
+    const legGeo = new THREE.BoxGeometry(0.24, 0.7, 0.24);
+    const leftLeg = limb(legGeo, fur, -0.2, 0.72);
+    const rightLeg = limb(legGeo, fur, 0.2, 0.72);
     player.add(leftLeg.pivot, rightLeg.pivot);
 
-    // Zapatos
-    [-0.18, 0.18].forEach((x) => {
-      const s = new THREE.Mesh(new THREE.BoxGeometry(0.26, 0.16, 0.4), shoe);
-      s.position.set(x, 0.08, 0.08);
-      player.add(s);
+    // Pies.
+    [-0.2, 0.2].forEach((x) => {
+      const f = new THREE.Mesh(new THREE.BoxGeometry(0.28, 0.16, 0.44), fur);
+      f.position.set(x, 0.08, 0.1);
+      player.add(f);
     });
 
     player.position.set(LANES[laneIndex], 0, PLAYER_Z);
     scene.add(player);
 
-    playerParts = { leftArm, rightArm, leftLeg, rightLeg, torso, head, cap };
+    playerParts = { leftArm, rightArm, leftLeg, rightLeg, torso, head };
 
     // Escudo (esfera translucida)
     const sh = new THREE.Mesh(
