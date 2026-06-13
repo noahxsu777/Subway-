@@ -9,7 +9,24 @@
 <body>
   <div id="app">
     <main id="game-wrap">
-      <div id="game"></div>
+      <div id="game">
+        <div id="hud">
+          <div id="hud-left">
+            <div id="hud-score">Score 0</div>
+            <div id="hud-coins">Monedas 0</div>
+            <div id="hud-dist">Dist 0 m</div>
+          </div>
+          <div id="hud-power"></div>
+          <div id="hud-banner"></div>
+          <div id="hud-over">
+            <div class="over-box">
+              <h2>GAME OVER</h2>
+              <p id="over-score"></p>
+              <p class="hint">Toca o pulsa ESPACIO para reiniciar</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
 
     <aside id="panel">
@@ -53,13 +70,10 @@
     </aside>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/phaser@3.80.1/dist/phaser.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="/socket.io/socket.io.js"></script>
-  <script src="js/game/BootScene.js"></script>
-  <script src="js/game/GameScene.js"></script>
-  <script src="js/game/UIScene.js"></script>
+  <script src="js/game/runner3d.js"></script>
   <script src="js/actions.js"></script>
-  <script src="js/game/main.js"></script>
   <script src="js/socket.js"></script>
   <script src="js/controlPanel.js"></script>
 </body>

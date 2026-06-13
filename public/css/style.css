@@ -34,10 +34,70 @@ body {
 }
 
 #game {
+  position: relative;
+  width: 480px;
+  height: 720px;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
 }
+#game canvas { display: block; }
+
+#hud {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  font-family: monospace;
+}
+#hud-left {
+  position: absolute;
+  top: 12px; left: 14px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.7);
+}
+#hud-score { font-size: 20px; color: #fff; }
+#hud-coins { font-size: 18px; color: #ffd166; }
+#hud-dist { font-size: 16px; color: #d6e0ec; }
+#hud-power {
+  position: absolute;
+  top: 12px; right: 14px;
+  text-align: right;
+  font-size: 16px;
+  font-weight: bold;
+  color: #25f4ee;
+  white-space: pre-line;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.7);
+}
+#hud-banner {
+  position: absolute;
+  top: 90px; left: 50%;
+  transform: translateX(-50%);
+  background: #fe2c55;
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: bold;
+  opacity: 0;
+  transition: opacity 0.4s;
+  white-space: nowrap;
+}
+#hud-over {
+  position: absolute;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.45);
+}
+#hud-over .over-box {
+  background: rgba(14,17,22,0.9);
+  border: 2px solid #fe2c55;
+  border-radius: 12px;
+  padding: 24px 32px;
+  text-align: center;
+}
+#hud-over h2 { color: #fe2c55; margin: 0 0 10px; font-size: 28px; }
+#hud-over p { color: #fff; margin: 6px 0; }
 
 #panel {
   width: 380px;

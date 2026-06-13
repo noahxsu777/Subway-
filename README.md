@@ -1,6 +1,7 @@
 # Subway x TikTok LIVE
 
-Runner infinito tipo *Subway Surfers* que se conecta a un **TikTok LIVE** usando
+Runner infinito **3D** tipo *Subway Surfers* (personaje animado corriendo con la
+cámara detrás, hecho con **Three.js**) que se conecta a un **TikTok LIVE** usando
 la **API de TikTools** ([tik.tools](https://tik.tools)). Cuando los espectadores
 envían **regalos**, se disparan **acciones configurables** dentro del juego:
 propulsión, aparecer un carro, aparecer un cono, salto/agacharse forzado, imán de
@@ -18,8 +19,10 @@ TikTok LIVE  ──(tiktok-live-api / tik.tools)──▶  Servidor Node.js
 - **Servidor** (`server/`): Express + Socket.IO. Se conecta a un usuario de
   TikTok LIVE con `tiktok-live-api`, escucha el evento `gift`, busca el mapeo en
   `config/gift-actions.json` y envía la acción al navegador.
-- **Juego** (`public/js/game/`): runner de 3 carriles en Phaser 3 (formas
-  generadas, sin assets externos).
+- **Juego** (`public/js/game/runner3d.js`): runner 3D de 3 carriles en Three.js.
+  El personaje y el escenario se construyen con geometría de Three.js (sin assets
+  externos ni material con copyright); el personaje tiene animación de carrera,
+  salto y deslizamiento procedurales.
 - **Panel** (`public/js/controlPanel.js`): conectar el usuario de TikTok, editar
   los mapeos regalo→acción y un **simulador** para probar sin estar en directo.
 
@@ -62,5 +65,6 @@ Abre <http://localhost:3000>.
 
 - La conexión real depende de la API de TikTools (tier Community gratuito) y de
   que el usuario esté efectivamente en directo.
-- Los sprites son formas simples para evitar material con copyright; se pueden
-  reemplazar por imágenes reales en `BootScene.js`.
+- El personaje y los obstáculos son geometría low-poly para evitar material con
+  copyright; se pueden reemplazar por un modelo rigged glTF en `runner3d.js`
+  (`buildPlayer`).
